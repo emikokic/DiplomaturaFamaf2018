@@ -1,0 +1,32 @@
+lab2_05_CountLRCV-GS.ipynb                                       DEV    |   TEST
+==================================================================================
+2018-08-15_results-countLRCV-gs-01.csv              -----     0.897196  |  0.88000
+2018-08-15_results-countLRCV-gs-02.csv              -----     0.897196  |  0.88000
+
+
+lab2_06_TfidfSVM-GS.ipynb                                        DEV    |   TEST
+==================================================================================
+2018-08-15_results-tfidfSVM-gs01.csv                -----     0.906542  |  0.93333
+2018-08-15_results-tfidfSVM-gs02.csv                -----     0.906542  |  0.93333
+
+
+lab2_07_TfidfSVM-GS_Tokenizer.ipynb                              DEV    |   TEST
+==================================================================================
+2018-08-15_results-tfidfSVM-gs-tokenizer01.csv      -----     0.915888  |  0.93333
+2018-08-15_results-tfidfSVM-gs-tokenizer02.csv      -----     0.915888  |  0.93333
+
+
+lab2_08_TfidfLRCV-GS.ipynb                                       DEV    |   TEST
+==================================================================================
+2018-08-15_results-tfidfLRCV-gs01.csv               -----     0.906542  |  0.92666
+2018-08-15_results-tfidfLRCV-gs02.csv               -----     0.906542  |  0.92666
+2018-08-15_results-tfidfLRCV-gs03.csv               -----     0.906542  |  0.92666
+2018-08-15_results-tfidfLRCV-gs04.csv               -----     0.906542  |  0.92666
+
+
+lab2_09_TfidfLRCV-GS_Tokenizer.ipynb                             DEV    |   TEST
+==================================================================================
+2018-08-15_results-tfidfLRCV-gs-tokenizer01.csv     -----     0.925234  |  0.92666
+2018-08-15_results-tfidfLRCV-gs-tokenizer02.csv     -----     0.925234  |  0.92666
+2018-08-15_results-tfidfLRCV-gs-tokenizer03.csv     -----     0.925234  |  0.92666
+2018-08-15_results-tfidfLRCV-gs-tokenizer04.csv     -----     0.925234  |  0.92666
