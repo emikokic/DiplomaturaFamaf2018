@@ -1,0 +1,9 @@
+# Para descargar usar: $ wget -i datasets.py
+
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/Countries-Continents.csv
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/armed_conflicts.csv
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/martin_fierro.txt
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/poblacion_provincia.tsv
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/quijote.txt
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/titanic_train.csv
+https://cs.famaf.unc.edu.ar/~mteruel/datasets/diplodatos/violencia-institucional-2018-01.csv

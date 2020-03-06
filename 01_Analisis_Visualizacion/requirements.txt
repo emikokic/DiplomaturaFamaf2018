@@ -1,0 +1,13 @@
+ipython  # Interprete de python mejorado
+matplotlib  # Para hacer graficos
+numpy  # Para soporte de vectores y matrices
+pandas  # Para Data Science (manejo de csv, excel, etc)
+seaborn  # Para visualizacion de datos (basada en mathplotlib)
+scipy  # Para herramientas y algoritmos matemáticos
+
+jupyter  # Para notebook interactivas
+# Iniciar: jupyter notebook
+
+jupyterlab  # Para notebook interactivas mejoradas
+# After: jupyter serverextension enable --py jupyterlab --sys-prefix
+# Iniciar: jupyter lab

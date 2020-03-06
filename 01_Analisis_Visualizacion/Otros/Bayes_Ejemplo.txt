@@ -1,0 +1,20 @@
+Bayes (ejemplo)
+===============
+Una fabrica de embutidos produce 5000 paquetes diarios:
+* Maquina A: 3000 (2% defectuoso, 98% normales)
+* Maquina A: 2000 (4% defectuoso, 96% normales)
+
+P(D) = ?
+P(A/D) = ?
+
+P(D) = P(A) * P(A/D) + P(B) * P(B/D)
+     = 3000/5000 * 0.02 + 2000/5000 * 0.04
+
+P(D/A) = P(A/D) * P(A) / P(D) = (0.02 * 3000/5000)/P(D) = 0.42
+
+
+
+
+Tarea
+=====
+Hacer ejemplo de Ensemble de la clase 1
