@@ -1,0 +1,12 @@
+numpy  # Para soporte de vectores y matrices
+scipy  # Para herramientas y algoritmos matemáticos
+scikit-learn  # Para Machine Learning
+matplotlib  # Para hacer graficos
+seaborn  # Para visualizacion de datos (basada en mathplotlib)
+
+jupyter  # Para notebook interactivas
+# Iniciar: jupyter notebook
+
+jupyterlab  # Para notebook interactivas mejoradas
+# After: jupyter serverextension enable --py jupyterlab --sys-prefix
+# Iniciar: jupyter lab
