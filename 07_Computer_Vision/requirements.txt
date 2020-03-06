@@ -1,0 +1,38 @@
+# Para soporte de vectores y matrices
+numpy==1.15.1
+
+# Para manejo de DataFrames
+pandas==0.23.4
+
+# Para herramientas y algoritmos matemáticos
+scipy==1.1.0
+
+# Para Machine Learning
+scikit-learn==0.19.2
+
+# Para hacer graficos
+matplotlib==2.2.3
+seaborn==0.9.0
+
+# Para notebook interactivas
+# Iniciar: jupyter notebook
+jupyter==1.0.0
+
+# Para notebook interactivas mejoradas
+jupyterlab==0.35.4
+# After: jupyter serverextension enable --py jupyterlab --sys-prefix
+# Iniciar: jupyter lab
+
+# Para barra de progreso en Jupyter Notebook/Lab
+tqdm==4.26.0
+
+# Para tratamiento de imagenes
+opencv-python==3.4.3.18
+Pillow==5.2.0
+pydot==1.2.4
+
+# Para Deep Learning
+keras==2.2.2
+
+# TensorFlow
+tensorflow-gpu==1.5

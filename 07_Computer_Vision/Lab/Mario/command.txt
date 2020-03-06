@@ -1,0 +1,1 @@
+/users/mferreyra/DiploDatos2018/Computer_Vision/Lab/Mario/build_model.py --epochs 50 --model_type 1 --train_base_layers 0 --drop_prob 0.5
