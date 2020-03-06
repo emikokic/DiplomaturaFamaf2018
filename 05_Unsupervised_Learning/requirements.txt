@@ -1,0 +1,34 @@
+# Para soporte de vectores y matrices
+numpy
+
+# Para herramientas y algoritmos matemáticos
+scipy
+
+# Para Machine Learning
+scikit-learn
+
+# Para hacer graficos
+matplotlib
+
+# Para visualizacion de datos (basada en mathplotlib)
+seaborn
+
+# Para notebook interactivas
+# Iniciar: jupyter notebook
+jupyter
+
+# Para notebook interactivas mejoradas
+# After: jupyter serverextension enable --py jupyterlab --sys-prefix
+# Iniciar: jupyter lab
+jupyterlab
+
+tqdm  # Para barra de progreso en Jupyter Notebook/Lab
+
+nltk  # Para PLN
+spacy  # python -m spacy download en
+gensim
+pyemd
+
+unidecode  # Para eliminar acentos
+
+graphviz==0.8.3  # https://pypi.org/project/graphviz/
