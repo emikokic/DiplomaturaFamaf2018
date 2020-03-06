@@ -1,0 +1,15 @@
+
+\begin{block}{ejemplo de K-means:}
+
+\begin{verbatim}
+##
+##     setosa versicolor virginica
+##   1     50          0         0
+##   2      0         48         4
+##   3      0          2        46
+\end{verbatim}
+
+\includegraphics{class2_files/figure-beamer/unnamed-chunk-23-1.pdf}
+
+\end{block}
+

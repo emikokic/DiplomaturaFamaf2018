@@ -1,0 +1,4 @@
+Si ocurren errores al instalar los paquetes:
+
+* VIM: sudo apt-get install libcurl4-gnutls-dev
+* rgl: sudo apt-get install r-cran-rgl

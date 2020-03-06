@@ -1,0 +1,127 @@
+### Diagnosticando Cancer:
+
+* Investigaremos ahora la utilidad del ML para detectar cancer aplicando 
+el algoritmo kNN a mediciones de biopsias de mujeres, utilizando el 
+conjunto de datos  "Breast Cancer Winscosin Diagnostic" del
+UCI ML Repository <http://archive.ics.uci.edu/ml> que incluye 569 ejemplos
+de biopsias, en cada una se midieron 32 features  (diferentes caracteristicas de las nucleos celulares) y el diagnostico codificado como
+M (Maligno) o B (Benigno).
+
+```{r echo=TRUE}
+data <- read.csv("http://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data",header=FALSE)
+data <- data[-1]
+str(data)
+```
+
+
+
+
+### Entendiendo los datos:
+Independientemente del metodo de ML aplicado, las variables de identificacion **deben** ser excluidas.
+No hacerlo puede llevar a hallazgos erroneos a causa de que la identificacion puede ser utilizada para predecir muy bien.
+La siguiente variable, el diagnostico es de particular interes, por que es lo que se quiere predecir.
+
+
+```{r echo=TRUE}
+table(data$V2)
+```
+
+Ya que estamos miremos el resto de las variables, sus rangos etc.
+
+```{r echo=TRUE}
+summary(data)
+```
+
+
+### Transformacion de los datos:
+
+Necesitamos crear una funcion normalizacion en R:
+
+```{r echo=TRUE}
+normalize_min_max <- function(x) {
+  return ((x-min(x))/(max(x)-min(x)))
+}
+
+normalize_z_score <- function(x) {
+  return ((x-mean(x))/sd(x))
+}
+```
+
+Despues de ejecutar el codigo previo, la funcion esta disponible para sus uso. Veamos si funciona en algunos vectores.
+
+```{r echo=TRUE}
+normalize_z_score(c(1,2,3,4,5))
+normalize_z_score(c(10,20,30,40,50))
+
+#scale(c(1,2,3,4,5))
+#scale(c(10,20,30,40,50))
+```
+
+No podemos aplicar la funcion a los features numericos del dataframe directamente.
+
+
+### Transformacion de los datos:
+
+La funcion lapply() de R toma una lista y aplica una funcion a cada elemento de la lista.
+
+
+```{r echo=TRUE}
+data_n <- as.data.frame(lapply(data[2:31], scale))
+summary(data_n$V3)
+summary(data_n$V8)
+```
+
+Bingo!  En ausencia de nuevos datos de laboratorio, vamos a simular este escenario dividiendo 
+nuestros datos en una **muestra de entrenamiento**  que usaremos para construir el modelo kNN 
+y una **muestra de validacion** que usaremos para medir la presicion predictiva del mismo.
+
+
+### Entrenando un clasificador:
+
+Notese que dichos conjuntos de datos deben ser representativos del conjunto de datos, i.e. **metodos de muestreo aleatorios**!
+
+```{r echo=TRUE}
+data_train <- data_n[1:469, ]
+data_test  <- data_n[470:569, ] 
+```
+
+Excluimos la variable objetivo (Benigno/Maligno), pero necesitamos guardar estos factores en vectores!
+
+```{r echo=TRUE}
+data_train_labels <- data[1:469, 1]
+data_test_labels  <- data[470:569, 1]
+```
+
+
+Para el algoritmo kNN la fase de entrenamiento no involucra construir un modelo, para
+clasificar nuestros datos de validacion utilizaremos el paquete class, instalarlo ia!
+
+La datps de validacion son clasificados tomando los votos entre los k vecinos mas cercanos
+del conjunto de entrenamiento. Si hay empate se decide aleatoriamente. Entonces usamos
+la funcion knn() para clasificar.
+
+
+### Evaluando la performance del modelo.
+
+
+```{r echo=TRUE}
+library(class)
+data_test_pred <- knn(train=data_train, test=data_test, cl=data_train_labels, k=21)
+```
+
+El siguiente paso en el proceso es evaluar como las clases predichas  en data_test_pred
+se condicen con los valores verdaderos en el vector data_test_labels.
+
+```{r echo=TRUE}
+library(gmodels)
+CrossTable(x=data_test_labels, y=data_test_pred, prop.chisq = FALSE)
+```
+
+
+
+### Ejercicios.
+
+Los valores correctos estan en la diagonal de la matriz, 98% de precision para unas pocas lineas de R!:
++ Mejore el rendimiento utilizando una normalizacion con z-scores provista por la funcion scale() de R.
++ Pruebe algunos valores alternativos de k=1, 5,  11, 15, 21 y seleccione el mejor valor de k.
++ mientras termina su merecido cafe verifique si el resultado cambia utilizando paciente elegidos aleatoriamente para el conjunto de validacion.

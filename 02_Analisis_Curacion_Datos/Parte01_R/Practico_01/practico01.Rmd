@@ -1,0 +1,144 @@
+---
+title: "Analisis exploratorio y curacion de datos"
+author: "Mario Ferreyra, Emiliano Kokic"
+date: "18 de Mayo 2018"
+output: pdf_document
+---
+
+--------------------------------------------------------------------------------
+
+Practico 1
+==========
+Entregar un Rmd donde se encuentren todos los vuelos que:
+
+- Que arribaron con un retraso de mas de dos horas.
+- Volaron hacia Houston (IAH o HOU)
+- Fueron operados por United, American o Delta.
+- Salieron en Verano (Julio, Agosto y Septiembre)
+- Arrivaron mas de dos horas tarde, pero salieron bien.
+- Salieron entre medianoche y las 6 am.
+
+--------------------------------------------------------------------------------
+Conjunto de datos sobre los vuelos en Nueva York en 2013.
+  
+```{r echo=TRUE}
+library(nycflights13)
+flights <- nycflights13::flights
+flights
+```
+
+
+* 1-Checkeando las dimensiones
+```{r echo=TRUE}
+dim(flights)
+```
+
+
+* 2-Estructura
+```{r echo=TRUE}
+str(flights)
+```
+
+
+ * 3-Resumen
+```{r echo=TRUE}
+summary(flights)
+```
+
+### 1. Vuelos que arribaron con un retraso de mas de dos horas.
+
+```{r echo=TRUE}
+# 2 hs <---> 120 min
+flights_delay_more_2hs <- subset(flights, flights$arr_delay > 120)
+
+d = dim(flights_delay_more_2hs)
+print(paste0("Cantidad de vuelos que arribaron con retraso mayor a 2hs: ", d[1]))
+
+counts_flights_delay_more_2hs <- table(flights_delay_more_2hs$arr_delay)
+#counts_flights_delay_more_2hs
+
+barplot(counts_flights_delay_more_2hs, xlab="Delay [min]", ylab="# Flights")
+# Distribucion Exponencial
+```
+
+
+### Vuelos que volaron hacia Houston (IAH o HOU)
+```{r echo=TRUE}
+flights_2_houston <- subset(flights, flights$dest == "IAH" | flights$dest == "HOU")
+
+d = dim(flights_2_houston)
+print(paste0("Cantidad de vuelos hacia Houston: ", d[1]))
+```
+
+
+### Vuelos que fueron operados por United, American o Delta.
+```{r echo=TRUE}
+nycflights13::airlines
+```
+
+```{r echo=TRUE}
+United <- "UA"  # United Air Lines Inc.
+American <- "AA"  # American Airlines Inc.
+Delta <- "DL"  # Delta Air Lines Inc.
+
+flights_UAD <- subset(flights, (flights$carrier == United) |
+                               (flights$carrier == American) |
+                               (flights$carrier == Delta))
+
+dim(flights_UAD)
+
+counts_flights_UAD <- table(flights_UAD$carrier)
+counts_flights_UAD
+
+barplot(counts_flights_UAD,  horiz=TRUE)
+```
+
+
+### Vuelos que salieron en Verano (Julio, Agosto y Septiembre)
+```{r echo=TRUE}
+# Julio <---> 7
+# Agosto <---> 8
+# Septiembre <---> 9
+flights_summer <- subset(flights, 7 <= flights$month & flights$month <= 9)
+
+dim(flights_summer)
+
+counts_flights_summer <- table(flights_summer$month)
+counts_flights_summer
+
+barplot(counts_flights_summer, horiz=TRUE, names.arg=c("Julio", "Agosto", "Septiembre"))
+```
+
+
+### Vuelos que arrivaron mas de dos horas tarde, pero salieron bien.
+```{r echo=TRUE}
+#subset(flights_delay_more_2hs, is.na(flights_delay_more_2hs))
+
+# Vuelos que salieron bien = No hubo demora en la salida 
+flights_delay_more_2hs_OK <- subset(flights, flights$arr_delay > 120 & flights$dep_delay <= 0)
+
+d = dim(flights_delay_more_2hs_OK)
+
+print(paste0("Cantidad de vuelos con delay mayor a 2hs que no demoraron en salir: ", d[1]))
+```
+
+
+### Vuelos que salieron entre medianoche (00:00) y las 6 AM (06:00).
+```{r echo=TRUE}
+time_dep <- function(hour=0, min=0, dep_delay=0){
+    return(hour * 60 + min + dep_delay)
+}
+
+flights_00_06 <- subset(flights, time_dep(flights$hour, flights$minute, flights$dep_delay) >= time_dep(0) &
+                                 time_dep(flights$hour, flights$minute, flights$dep_delay) <= time_dep(6))
+
+d = dim(flights_00_06)
+
+print(paste0("Cantidad de vuelos que salieron entre medianoche y las 6AM: ", d[1]))
+
+flights_00_06_by_hour <- table(flights_00_06$hour)
+flights_00_06_by_hour
+
+barplot(flights_00_06_by_hour, main="Vuelos que salieron entre 00:00 y 06:00",
+        xlab="Horas", ylab="Cantidad")
+```
