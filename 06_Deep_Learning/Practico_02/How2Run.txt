@@ -1,0 +1,5 @@
+(diplodatos-dl) $ sbatch submit_job_slurm.sh command.txt
+
+Donde 'command.txt':
+
+/users/mferreyra/Deep_Learning/Practico_02/build_model.py --epochs 200

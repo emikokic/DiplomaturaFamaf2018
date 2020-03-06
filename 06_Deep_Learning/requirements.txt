@@ -1,0 +1,39 @@
+# Para soporte de vectores y matrices
+numpy==1.15.1
+
+# Para manejo de DataFrames
+pandas==0.23.4
+
+# Para herramientas y algoritmos matemáticos
+scipy==1.1.0
+
+# Para Machine Learning
+scikit-learn==0.19.2
+
+# Para hacer graficos
+matplotlib==2.2.3
+seaborn==0.9.0
+
+# Para notebook interactivas
+# Iniciar: jupyter notebook
+jupyter==1.0.0
+
+# Para notebook interactivas mejoradas
+jupyterlab==0.34.10
+# After: jupyter serverextension enable --py jupyterlab --sys-prefix
+# Iniciar: jupyter lab
+
+# Para barra de progreso en Jupyter Notebook/Lab
+tqdm==4.26.0
+
+# Para PLN
+nltk==3.3
+
+# Para Deep Learning
+keras==2.2.2
+
+# https://pypi.org/project/graphviz/
+# graphviz==0.8.3
+
+# Tensorflow
+# pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.10.0-cp36-cp36m-linux_x86_64.whl
